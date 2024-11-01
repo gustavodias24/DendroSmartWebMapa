@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Inclui o Leaflet.js e a Omnivore -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
+
+    <title>Visualizador KMZ</title>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <h2 class="text-center mt-5">Visualizador KMZ</h2>
+        <div id="map" style="height: 500px; width: 100%;" class="mt-4"></div>
+    </div>
+
+    <script>
+        // Inicializa o mapa em uma posição padrão e zoom
+        var map = L.map('map').setView([-15.77972, -47.92972], 4);  // Coordenadas para o Brasil
+
+        // Adiciona a camada de tiles do OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Carrega o arquivo KML correspondente ao KMZ selecionado (substituindo .kmz por .kml)
+        omnivore.kml('{{ url_for("static", filename="kmz_files/" + kmz_file.replace(".kmz", ".kml")) }}')
+            .on('ready', function() {
+                // Ajusta o mapa para mostrar todo o conteúdo do KML
+                map.fitBounds(this.getBounds());
+            })
+            .addTo(map);
+    </script>
+</body>
+</html>

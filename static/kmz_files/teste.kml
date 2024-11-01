@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Sem título</name>
+	<gx:CascadingStyle kml:id="__managed_style_2029A6E7CD335EAD48D4">
+		<Style>
+			<IconStyle>
+				<scale>1.8</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_127623198D335EAD48D4">
+		<Style>
+			<IconStyle>
+				<scale>1.5</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_01AE6CC23B335EAD48D4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_127623198D335EAD48D4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2029A6E7CD335EAD48D4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="09B56C0301335EAD2507">
+		<name>teste</name>
+		<LookAt>
+			<longitude>-47.92281201334464</longitude>
+			<latitude>-1.284342773836796</latitude>
+			<altitude>45.68027421259613</altitude>
+			<heading>60.80046167635309</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>183.2764149741888</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_01AE6CC23B335EAD48D4</styleUrl>
+		<Point>
+			<coordinates>-47.92285625387978,-1.284158821389474,45.49423074890822</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

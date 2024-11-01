@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
+    <title>Mapa</title>
+    <style>
+        /* Estilo para ocupar 100% da tela */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        // Inicializa o mapa com zoom mais próximo e ajuste para permitir mais zoom
+        var map = L.map('map').setView([-15.77972, -47.92972], 6); // Aumentando o nível inicial para um zoom mais próximo
+
+        // Adiciona a camada de tiles ao mapa com maxZoom configurado para permitir mais zoom
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18  // Permite um zoom máximo mais alto
+        }).addTo(map);
+
+        // Carrega e exibe o arquivo KML com marcadores clicáveis
+        omnivore.kml("{{ url_for('view_kmz', file_id=file_id) }}")
+            .on('ready', function() {
+                map.fitBounds(this.getBounds());  // Ajusta a visualização para caber no mapa
+                
+                // Adiciona um popup com data/hora para cada ponto
+                this.eachLayer(function(layer) {
+                    if (layer.feature && layer.feature.properties) {
+                        // Extraindo informações de data/hora do ponto (ex: do campo 'name' ou 'description')
+                        var descricao_projeto = layer.feature.properties.description;
+                        // Adiciona um popup ao ponto com a data/hora
+                        layer.bindPopup(descricao_projeto);
+                    }
+                });
+            })
+            .addTo(map);
+    </script>
+</body>
+</html>
